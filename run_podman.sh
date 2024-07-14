@@ -1,0 +1,1 @@
+sudo podman run --rm -ti -e HOME=/home/olivier -e  XDG_DATA_HOME:"$XDG_DATA_HOME" -e XDG_CONFIG_HOME="${XDG_CONFIG_HOME}" -v /home:/home  -v /tmp/.X11-unix:/tmp/.X11-unix  -e DISPLAY=$DISPLAY --user 500  --security-opt label=disable --entrypoint=/bin/bash --network host python:3.11

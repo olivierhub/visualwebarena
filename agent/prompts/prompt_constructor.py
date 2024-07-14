@@ -44,18 +44,18 @@ class PromptConstructor(object):
         message: list[dict[str, str]] | str
         if "openai" in self.lm_config.provider:
             if self.lm_config.mode == "chat":
-                message = [{"role": "system", "content": intro}]
+                message = [{"role": "user", "content": intro}]
                 for (x, y) in examples:
                     message.append(
                         {
-                            "role": "system",
+                            "role": "user",
                             "name": "example_user",
                             "content": x,
                         }
                     )
                     message.append(
                         {
-                            "role": "system",
+                            "role": "user",
                             "name": "example_assistant",
                             "content": y,
                         }
@@ -343,7 +343,7 @@ class MultimodalCoTPromptConstructor(CoTPromptConstructor):
                     example_img = Image.open(z)
                     message.append(
                         {
-                            "role": "system",
+                            "role": "user",
                             "name": "example_user",
                             "content": [
                                 {"type": "text", "text": x},
@@ -362,7 +362,7 @@ class MultimodalCoTPromptConstructor(CoTPromptConstructor):
                     )
                     message.append(
                         {
-                            "role": "system",
+                            "role": "user",
                             "name": "example_assistant",
                             "content": [{"type": "text", "text": y}],
                         }
